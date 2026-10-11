@@ -1,0 +1,115 @@
+:root {
+  --bg: #eef3f2;
+  --surface: #ffffff;
+  --fg: #16302e;
+  --muted: #5a716e;
+  --line: #d5e0de;
+  --accent: #0f6e6a;
+  --accent-fg: #ffffff;
+  --ok-bg: #dcf2e6; --ok-fg: #1d6b3f;
+  --warn-bg: #fbecd2; --warn-fg: #8a5300;
+  --bad-bg: #f9dede; --bad-fg: #9b2a2a;
+  --font: "Segoe UI", "Assistant", "Arial Hebrew", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1a19;
+    --surface: #172625;
+    --fg: #e3eeec;
+    --muted: #98aeab;
+    --line: #2a3d3b;
+    --accent: #3fb3ad;
+    --accent-fg: #062220;
+    --ok-bg: #173a28; --ok-fg: #8fe0b2;
+    --warn-bg: #3d2e12; --warn-fg: #f2c27a;
+    --bad-bg: #401c1c; --bad-fg: #f2a3a3;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.5 var(--font);
+  min-height: 100vh;
+}
+
+.topbar {
+  position: sticky; top: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: calc(env(safe-area-inset-top, 0px) + 12px) 16px 12px;
+  background: var(--accent); color: var(--accent-fg);
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand img { border-radius: 8px; }
+h1 { font-size: 1.15rem; margin: 0; }
+.sub { margin: 0; font-size: .8rem; opacity: .85; }
+
+.banner {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 16px; background: var(--warn-bg); color: var(--warn-fg);
+}
+
+.wrap {
+  max-width: 640px; margin: 0 auto;
+  padding: 16px 16px calc(env(safe-area-inset-bottom, 0px) + 24px);
+  display: grid; gap: 16px;
+}
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; padding: 16px;
+}
+h2 { font-size: 1.05rem; margin: 0 0 4px; }
+.hint { margin: 0 0 12px; color: var(--muted); font-size: .9rem; }
+
+.status { list-style: none; margin: 0; padding: 0; }
+.status li {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 10px 0; border-top: 1px solid var(--line);
+}
+.status li:first-child { border-top: 0; }
+.pill {
+  font-weight: 600; font-size: .85rem; white-space: nowrap;
+  padding: 3px 10px; border-radius: 999px;
+  background: var(--line); color: var(--fg);
+}
+.pill.ok { background: var(--ok-bg); color: var(--ok-fg); }
+.pill.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.pill.bad { background: var(--bad-bg); color: var(--bad-fg); }
+
+.add { display: flex; gap: 8px; margin-bottom: 8px; }
+.add input {
+  flex: 1; min-width: 0;
+  font: inherit; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px;
+}
+.add input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.btn {
+  font: inherit; font-weight: 600; cursor: pointer;
+  border: 0; border-radius: 8px; padding: 10px 16px;
+  background: var(--line); color: var(--fg);
+}
+.btn-primary { background: var(--accent); color: var(--accent-fg); }
+.topbar .btn-primary { background: var(--accent-fg); color: var(--accent); }
+.btn-small { padding: 6px 12px; font-size: .9rem; background: var(--warn-fg); color: var(--warn-bg); }
+.btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+
+.list { list-style: none; margin: 0; padding: 0; }
+.list li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-top: 1px solid var(--line);
+}
+.list li label { flex: 1; min-width: 0; overflow-wrap: anywhere; cursor: pointer; }
+.list li.done label { text-decoration: line-through; color: var(--muted); }
+.list input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--accent); }
+.del {
+  background: none; border: 0; cursor: pointer; color: var(--muted);
+  font-size: 1.2rem; line-height: 1; padding: 4px 8px; border-radius: 6px;
+}
+.del:hover { color: var(--bad-fg); background: var(--bad-bg); }
+.empty { color: var(--muted); margin: 8px 0 0; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+[hidden] { display: none !important; }

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>בדיקת PWA</title>
+  <meta name="description" content="אפליקציית ניסיון ללמידת PWA">
+  <meta name="theme-color" content="#0f6e6a">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="בדיקת PWA">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="icons/icon-192.png" alt="" width="36" height="36">
+      <div>
+        <h1>בדיקת PWA</h1>
+        <p class="sub">אפליקציית ניסיון · גרסה <span id="appVersion">—</span></p>
+      </div>
+    </div>
+    <button id="installBtn" class="btn btn-primary" hidden>התקנה</button>
+  </header>
+
+  <div id="updateBanner" class="banner" hidden>
+    <span>יש גרסה חדשה של האפליקציה.</span>
+    <button id="reloadBtn" class="btn btn-small">רענון</button>
+  </div>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>מצב האפליקציה</h2>
+      <p class="hint">כאן רואים מה קורה מאחורי הקלעים. נסי לנתק את האינטרנט ולרענן — האפליקציה עדיין תעלה.</p>
+      <ul class="status">
+        <li><span>חיבור לאינטרנט</span><b id="stOnline" class="pill">…</b></li>
+        <li><span>Service Worker</span><b id="stSw" class="pill">…</b></li>
+        <li><span>קבצים שמורים לעבודה בלי אינטרנט</span><b id="stCache" class="pill">…</b></li>
+        <li><span>אופן הפתיחה</span><b id="stMode" class="pill">…</b></li>
+        <li><span>חיבור מאובטח (HTTPS)</span><b id="stSecure" class="pill">…</b></li>
+      </ul>
+      <p id="iosHint" class="hint" hidden>באייפון: לוחצים על כפתור השיתוף בספארי ואז "הוספה למסך הבית".</p>
+    </section>
+
+    <section class="card">
+      <h2>רשימת ציוד חסר (לדוגמה)</h2>
+      <p class="hint">הנתונים נשמרים במכשיר עצמו, גם בלי אינטרנט.</p>
+      <form id="addForm" class="add">
+        <label for="itemInput" class="sr">פריט</label>
+        <input id="itemInput" type="text" placeholder="למשל: כפפות לטקס M" autocomplete="off" required>
+        <button class="btn btn-primary" type="submit">הוספה</button>
+      </form>
+      <ul id="list" class="list"></ul>
+      <p id="emptyMsg" class="empty" hidden>הרשימה ריקה.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
